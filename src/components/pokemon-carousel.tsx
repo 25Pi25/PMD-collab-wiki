@@ -63,7 +63,7 @@ function filterMonster(
       (!fullyFeaturedPortraits || manual?.portraits.phase === Phase.Full) &&
       (!fullyFeaturedSprites || manual?.sprites.phase === Phase.Full)
     )
-    .sort((a, b) => rankMonsters(rankBy, a as Monster, b as Monster) ?? 0)
+    .sort((a, b) => rankMonsters(rankBy, a, b) ?? 0)
 }
 
 interface Props {

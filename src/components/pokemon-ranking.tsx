@@ -17,15 +17,15 @@ export default function PokemonRanking({ showParameters, rankBy, setRankBy }: Pr
         labelId="rank-by-label"
         id="rank-by"
         value={rankBy}
-        onChange={(e) => {
-          const selectedRankMethod = e.target.value as RankMethod
+        onChange={({ target: { value } }) => {
+          const selectedRankMethod = value as RankMethod
           Object.values(showParameters)
             .find(({ rankMethod }) => rankMethod == selectedRankMethod)
             ?.state[1](true);
           setRankBy(selectedRankMethod)
         }}
       >
-        {(Object.values(RankMethod) as RankMethod[]).map((r) => (
+        {Object.values(RankMethod).map((r) => (
           <MenuItem key={r} value={r}>
             {r}
           </MenuItem>

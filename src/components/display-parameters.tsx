@@ -11,8 +11,8 @@ export default function DisplayParameters({ showParameters }: { showParameters: 
             control={
               <Checkbox
                 checked={state}
-                onChange={(e) => {
-                  setState(e.target.checked)
+                onChange={({ target: { checked } }) => {
+                  setState(checked)
                 }}
               />
             }

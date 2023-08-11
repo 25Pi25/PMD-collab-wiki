@@ -6,15 +6,12 @@ import Lock from "./lock"
 import GameContainer from "./phaser/game-container"
 import { Card, Grid, Typography } from "@mui/material"
 
-export default function SpritePreview({
-  sprite,
-  dungeon,
-  animDataUrl
-}: {
+interface Props {
   sprite: Sprite
   dungeon: Dungeon
   animDataUrl: string
-}) {
+}
+export default function SpritePreview({ sprite, dungeon, animDataUrl }: Props) {
   const [initialized, setInitialized] = useState<boolean>(false)
   const gameContainer = useRef<GameContainer>()
 
@@ -27,18 +24,18 @@ export default function SpritePreview({
   const container = useCallback(
     (node: HTMLDivElement) => {
       async function initialize() {
-        const xmlData = await (await fetch(animDataUrl)).text()
-        const parser = new XMLParser()
-        const data = parser.parse(xmlData) as IPMDCollab
+        const xmlData = await (await fetch(animDataUrl)).text();
+        const parser = new XMLParser();
+        const data = parser.parse(xmlData) as IPMDCollab;
         gameContainer.current = new GameContainer(
-          node as HTMLDivElement,
+          node,
           sprite,
           data.AnimData,
           dungeon
         )
       }
 
-      if (node !== null && !initialized) {
+      if (node && !initialized) {
         setInitialized(true)
         initialize()
       }

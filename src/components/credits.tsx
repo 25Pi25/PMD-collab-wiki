@@ -2,7 +2,7 @@ import { Box, Grid, Link, Typography } from "@mui/material"
 import { Credit } from "../generated/graphql"
 
 export default function Credits({ primary, secondary }: {
-  primary: Credit | undefined | null
+  primary?: Credit | null
   secondary: Credit[]
 }) {
   return (
@@ -28,7 +28,7 @@ export default function Credits({ primary, secondary }: {
   )
 }
 
-function Author({ credit }: { credit: Credit | undefined | null }) {
+function Author({ credit }: { credit?: Credit | null }) {
   return (
     <Box key={credit?.id}>
       {credit?.name ? (

@@ -27,11 +27,10 @@ function TabPanel({ children, index, value, ...other }: TabPanelProps) {
 
 interface Props {
   infoKey: number
-  prevIndex: string | undefined
-  nextIndex: string | undefined
+  prevIndex?: string
+  nextIndex?: string
   rawId: string
 }
-
 export default function PokemonPage({ infoKey, prevIndex, nextIndex, rawId }: Props) {
   const [value, setValue] = useState(0)
 

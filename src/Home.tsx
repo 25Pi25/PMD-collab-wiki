@@ -24,21 +24,21 @@ export type ShowParameters = Record<string, {
   rankMethod?: RankMethod,
   name: string
 }>
+
 export default function Home({ ids, meta }: { ids: number[]; meta: Meta }) {
   const [currentText, setCurrentText] = useState("")
   const [rankBy, setRankBy] = useState<RankMethod>(RankMethod.POKEDEX_NUMBER)
   const showParameters: ShowParameters = {
-    index: { state: useState<boolean>(false), rankMethod: RankMethod.POKEDEX_NUMBER, name: "Index" },
-    portraitAuthor: { state: useState<boolean>(false), rankMethod: RankMethod.PORTRAIT_AUTHOR, name: "Portrait Author" },
-    spriteAuthor: { state: useState<boolean>(false), rankMethod: RankMethod.SPRITE_AUTHOR, name: "Sprite Author" },
-    lastModification: { state: useState<boolean>(false), rankMethod: RankMethod.LAST_MODIFICATION, name: "Last Change" },
-    portraitBounty: { state: useState<boolean>(false), rankMethod: RankMethod.PORTRAIT_BOUNTY, name: "Portrait Bounty" },
-    spriteBounty: { state: useState<boolean>(false), rankMethod: RankMethod.SPRITE_BOUNTY, name: "Sprite Bounty" },
-    fullyFeaturedSprites: { state: useState<boolean>(false), name: "Fully-Featured Portraits" },
-    fullyFeaturedPortraits: { state: useState<boolean>(false), name: "Fully-Featured Sprites" },
+    index: { rankMethod: RankMethod.POKEDEX_NUMBER, name: "Index", state: useState<boolean>(false) },
+    portraitAuthor: { rankMethod: RankMethod.PORTRAIT_AUTHOR, name: "Portrait Author", state: useState<boolean>(false) },
+    spriteAuthor: { rankMethod: RankMethod.SPRITE_AUTHOR, name: "Sprite Author", state: useState<boolean>(false) },
+    lastModification: { rankMethod: RankMethod.LAST_MODIFICATION, name: "Last Change", state: useState<boolean>(false) },
+    portraitBounty: { rankMethod: RankMethod.PORTRAIT_BOUNTY, name: "Portrait Bounty", state: useState<boolean>(false) },
+    spriteBounty: { rankMethod: RankMethod.SPRITE_BOUNTY, name: "Sprite Bounty", state: useState<boolean>(false) },
+    fullyFeaturedSprites: { name: "Fully-Featured Portraits", state: useState<boolean>(false) },
+    fullyFeaturedPortraits: { name: "Fully-Featured Sprites", state: useState<boolean>(false) },
   }
-  const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"))
+  const isMobile = useMediaQuery(useTheme().breakpoints.down("md"))
 
   return (
     <Box>

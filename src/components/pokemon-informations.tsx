@@ -18,10 +18,8 @@ export default function PokemonInformations({ info: { sprites, portraits } }: Pr
     Math.floor(Math.random() * Object.keys(Dungeon).length)
     ] as Dungeon
   )
-  const portraitDate = portraits.modifiedDate &&
-    new Date(portraits.modifiedDate)
-  const spriteDate = sprites.modifiedDate &&
-    new Date(sprites.modifiedDate)
+  const portraitDate = portraits.modifiedDate && new Date(portraits.modifiedDate)
+  const spriteDate = sprites.modifiedDate && new Date(sprites.modifiedDate)
   const portraitSheetUrl = portraits.sheetUrl && (
     <Link target="_blank" href={portraits.sheetUrl}>
       <Typography>Download all portraits</Typography>

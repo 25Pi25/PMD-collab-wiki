@@ -50,25 +50,25 @@ export default function PokemonThumbnail({
           </Typography>
         )}
         <Typography
-          align="center" color="GrayText" noWrap sx={textBoxWithResize(monster.name)}
+          align="center" color="GrayText" noWrap sx={textBoxWithResize(monster.name)} fontSize={16 * boxScale}
         >
           {monster.name}
         </Typography>
         {showForms && (
-          <Typography color="GrayText" align="center" noWrap sx={textBoxWithResize(form.fullName)}>
+          <Typography color="GrayText" align="center" noWrap sx={textBoxWithResize(form.fullName)} fontSize={16 * boxScale}>
             {form.fullName}
           </Typography>
         )}
-        {index && <Typography align="center" color="GrayText" noWrap sx={{ width: boxSize, height: 25 }}>
+        {index && <Typography align="center" color="GrayText" noWrap sx={{ width: boxSize, height: 25 }} fontSize={16 * boxScale}>
           {infoKey}
         </Typography>}
         {portraitAuthor && (
-          <Typography align="center" color="GrayText" noWrap sx={textBoxWithResize(form.portraits.creditPrimary?.name)}>
+          <Typography align="center" color="GrayText" noWrap sx={textBoxWithResize(form.portraits.creditPrimary?.name)} fontSize={16 * boxScale}>
             {form.portraits.creditPrimary?.name ?? "N/A"}
           </Typography>
         )}
         {spriteAuthor && (
-          <Typography align="center" color="GrayText" noWrap sx={textBoxWithResize(form.sprites.creditPrimary?.name)}>
+          <Typography align="center" color="GrayText" noWrap sx={textBoxWithResize(form.sprites.creditPrimary?.name)}  fontSize={16 * boxScale}>
             {form.sprites.creditPrimary?.name ?? "N/A"}
           </Typography>
         )}

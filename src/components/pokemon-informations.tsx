@@ -19,6 +19,7 @@ import {
 import { getLastModification } from "../util"
 import { CreditsPrimary, CreditsSecondary } from "./credits"
 import { XMLParser } from 'fast-xml-parser'
+import { Stage } from '@pixi/react'
 
 export const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -143,7 +144,7 @@ export default function PokemonInformations({
         {sprites.actions.length ? (
           <Grid container spacing={2} sx={{ mt: 3 }}>
             {animList && sortedActions.map(
-              (sprite) =>
+              (sprite, i) =>
                 sprite.__typename === "Sprite" &&
                 (
                   <Grid item key={sprite.action}>
@@ -153,6 +154,7 @@ export default function PokemonInformations({
                         sprite={sprite}
                         animData={animData}
                         history={sprites.history.filter((e) => !e.obsolete)}
+                        i={i}
                       />
                     </Paper>
                   </Grid>

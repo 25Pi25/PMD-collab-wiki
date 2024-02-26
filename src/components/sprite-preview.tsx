@@ -1,43 +1,21 @@
-import { useCallback, useRef } from "react"
+import { Stage } from '@pixi/react'
 import { MonsterHistory, Sprite } from "../generated/graphql"
 import { Dungeon, IPMDCollab } from "../types/enum"
 import Lock from "./lock"
-import GameContainer from "./phaser/game-container"
 import { Card, Grid, Typography } from "@mui/material"
+import { lazy, useEffect, useState } from 'react'
 
 interface Props {
   sprite: Sprite
   dungeon: Dungeon
   animData: IPMDCollab
   history: MonsterHistory[]
+  i: number
 }
-export default function SpritePreview({ sprite, dungeon, animData, history }: Props) {
-  const gameContainer = useRef<GameContainer>()
-
-  const container = useCallback(
-    (node: HTMLDivElement) => {
-      async function initialize() {
-        gameContainer.current = new GameContainer(
-          node,
-          sprite,
-          animData.AnimData,
-          dungeon
-        )
-      }
-
-      // TODO: the phaser instance isn't being destroyed on page change, this seriously needs to be fixed
-      if (node !== null) {
-        gameContainer.current?.game.destroy(true)
-      }
-
-      initialize()
-    },
-    [animData, sprite, dungeon]
-  )
-
+export default function SpritePreview({ sprite, dungeon, animData, history, i }: Props) {
   return (
     <Card>
-      <div id={`action-${sprite.action}`} ref={container}></div>
+      {i < 16 && <Stage width={200} height={200}></Stage>}
       <Grid container justifyContent="center" alignItems="start">
         <Lock
           locked={sprite.locked}

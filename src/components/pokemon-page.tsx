@@ -70,9 +70,9 @@ export default function PokemonPage({ infoKey, prevIndex, nextIndex, rawId }: Pr
 
   return (
     <Box>
-      <Helmet>
-        {data && <title>#{rawId} {data.monster[0].name}</title>}
-      </Helmet>
+      {data && <Helmet>
+          <title>#{rawId} {data.monster[0].name}</title>
+        </Helmet>}
       <Bar />
       <Container
         maxWidth="xl"
